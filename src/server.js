@@ -1,11 +1,16 @@
 import express from "express";
-import PizzaController from "./controllers/pizzaController.js";
+import passport from "passport";
+import personajesController from "./controllers/personajesController.js";
+import {jwtStrategy} from "./common/jwt.strategy.js"
 
 const app = express();
 const port = 3001;
 app.use(express.json());
 
-app.use("", PizzaController)
+passport.use(jwtStrategy);/*no definido*/
+app.use(passport.initialize());
+
+app.use("", personajesController)
 
 app.listen (port, ()=>{
     console.log(`EJEMPLO ${port}`)

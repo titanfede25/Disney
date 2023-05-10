@@ -1,6 +1,14 @@
 import { Router } from 'express';
-import Pizza from '../models/pizza.js'; 
-import {getAll,getById,create,update,deleteById} from '../services/pizzaService.js';
+import Personaje from '../models/personaje.js'; 
+import {getAllCharacters} from '../services/Service.js'
+
+const router = Router();
+router.get ('/characters', async(req, res)=>{
+    const personajes        = await Service.getAllCharacters();
+    res.status(200).send(personajes);
+})
+export default router;
+/*import {getAll,getById,create,update,deleteById} from '../services/Service.js';
 
 const router = Router();
 router.get ('/:id', async(req, res)=>{
@@ -58,5 +66,5 @@ router.post('/', async(req, res)=>{
         status = 400;
     }
     res.status(status).send(creado);
-})
-export default router;
+})*/
+

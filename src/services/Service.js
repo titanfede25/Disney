@@ -1,12 +1,12 @@
 import sql from 'mssql';
 import configDB from '../models/db.js';
 
-export const getAll = async () => {
+export const getAllCharacters = async () => {
     const conn      = await sql.connect(configDB);
-    const results   = await conn.request().query('SELECT * FROM Pizzas');
+    const results   = await conn.request().query('SELECT Imagen, Nombre, IDPersonaje FROM Personajes');
     return results.recordset; 
 }
-export const getById = async (id) => {
+/*export const getById = async (id) => {
     const conn      = await sql.connect(configDB);
     const results   = await conn.request().input('pId', sql.Int, id).query('SELECT * FROM Pizzas where Id = @pId');
     return results.recordset;
@@ -25,4 +25,4 @@ export const deleteById = async (id) => {
     const conn      = await sql.connect(configDB);
     const results   = await conn.request().input('pId', sql.Int, id).query('DELETE FROM Pizzas where Id = @pId');
     return results.recordset;
-}
+}*/

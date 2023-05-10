@@ -309,9 +309,19 @@ ALTER TABLE [dbo].[Conexiones]  WITH CHECK ADD  CONSTRAINT [FK_Conexiones_Person
 REFERENCES [dbo].[Personajes] ([IDPersonaje])
 GO
 ALTER TABLE [dbo].[Conexiones] CHECK CONSTRAINT [FK_Conexiones_Personajes]
+
 GO
-USE [master]
+USE [Disney]
 GO
 ALTER DATABASE [Disney] SET  READ_WRITE 
+CREATE LOGIN [yoda] WITH PASSWORD=N'dooku', DEFAULT_DATABASE=[Disney], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
 GO
 
+USE [Disney]
+GO
+CREATE USER [yoda] FOR LOGIN [yoda]
+GO
+USE [Disney]
+GO
+ALTER ROLE [db_owner] ADD MEMBER [yoda]
+GO
