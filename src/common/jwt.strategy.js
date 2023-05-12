@@ -1,6 +1,6 @@
 import passport from "passport";
-
-const { ExtractJwt, Strategy } = require("passport-jwt");
+import {ExtractJwt} from "passport-jwt";
+import {Strategy} from "passport-jwt";
 
 const opt = {
     secretOrKey: process.env.AUTH_HS256_KEY,

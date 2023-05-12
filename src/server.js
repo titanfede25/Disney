@@ -7,7 +7,7 @@ const app = express();
 const port = 3001;
 app.use(express.json());
 
-passport.use(jwtStrategy);/*no definido*/
+passport.use(jwtStrategy);
 app.use(passport.initialize());
 
 app.use("", personajesController)
