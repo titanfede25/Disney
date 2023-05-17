@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import Personaje from '../models/personaje.js'; 
-import {getAllCharacters, createCharacter, updateCharacter, deleteCharacter} from '../services/Service.js'
+import {getAllCharacters, createCharacter, updateCharacter, deleteCharacter, getDetailedCharacter} from '../services/personajesService.js'
 
 const router = Router();
 
@@ -45,6 +45,26 @@ router.delete ('/characters/:id', async(req, res)=>{
     const idBorrado     = await deleteCharacter(req.params.id);
     res.status(status).send(idBorrado);
 })
+router.get ('/characters/:id', async(req, res)=>{ /*no probado*/
+    let status = 200;
+    const id               = req.params.id;
+    const personaje    = await getDetailedCharacter(id);
+    if(personaje == null){
+        status = 404;
+    }
+    if (id < 0){
+        status = 400;
+    }
+    res.status(status).send(personaje);
+})
+router.get ('/characters', async(req, res)=>{ /*seguir el viernes*/
+    const name  = req.query.name;
+    const age   = req.query.age;
+    const movie = req.query.movie;
+
+})
+
+
 
 
 
