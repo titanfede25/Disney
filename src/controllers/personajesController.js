@@ -45,7 +45,7 @@ router.delete ('/characters/:id', async(req, res)=>{
     const idBorrado     = await deleteCharacter(req.params.id);
     res.status(status).send(idBorrado);
 })
-router.get ('/characters/:id', async(req, res)=>{ /*no probado*/
+router.get ('/characters/:id', async(req, res)=>{ 
     let status = 200;
     const id               = req.params.id;
     const personaje    = await getDetailedCharacter(id);
