@@ -4,6 +4,22 @@ import configDB from '../models/db.js';
 export const getAllCharacters = async () => {
     const conn      = await sql.connect(configDB);
     const results   = await conn.request().query('SELECT Imagen, Nombre, IDPersonaje FROM Personajes');
+    /* select * from personajes where 
+	(@pId = id OR @pId = '') AND
+	(@pEdad = personajes.Edad OR pEdad = 0) AND
+
+
+
+select * from personajes where 
+	(@pId = id OR @pId = '') AND
+	(0 = personajes.Edad OR 0= 0) 
+
+
+string query = 'SELECT * FROM PERSONAJES WHERE '
+
+if (@pEdad)
+	query = query + ' AND pesonajes.edad = ' + @pEdad;
+*/
     return results.recordset; 
 }
 export const createCharacter = async (personaje) => {
