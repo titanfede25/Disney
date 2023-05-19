@@ -5,6 +5,10 @@ import {getAllCharacters, createCharacter, updateCharacter, deleteCharacter, get
 const router = Router();
 
 router.get ('/characters', async(req, res)=>{
+    console.log(req.query.name);
+    console.log(req.query.age);
+    console.log(req.query.weight);
+    console.log(req.query.movie);
     const personajes        = await getAllCharacters();
     res.status(200).send(personajes);
 })
@@ -56,12 +60,6 @@ router.get ('/characters/:id', async(req, res)=>{
         status = 400;
     }
     res.status(status).send(personaje);
-})
-router.get ('/characters', async(req, res)=>{ /*seguir el viernes*/
-    const name  = req.query.name;
-    const age   = req.query.age;
-    const movie = req.query.movie;
-
 })
 
 export default router;
