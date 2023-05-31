@@ -5,21 +5,18 @@ import {getAllCharacters, createCharacter, updateCharacter, deleteCharacter, get
 const router = Router();
 
 router.get ('/characters', async(req, res)=>{
-    console.log(req.query.name);
-    console.log(req.query.age);
-    console.log(req.query.weight);
-    console.log(req.query.movie);
-    const personajes        = await getAllCharacters();
+    const lista = [req.query.name, req.query.age, req.query.weight, req.query.idMovie];
+    const personajes        = await getAllCharacters(lista);
     res.status(200).send(personajes);
 })
 router.post ('/characters', async(req, res)=>{
     let status = 201;
     const personaje     = new Personaje();
-    personaje.Imagen    = req.body.Imagen;
-    personaje.Nombre    = req.body.Nombre;
-    personaje.Edad      = req.body.Edad;
-    personaje.Peso      = req.body.Peso;
-    personaje.Historia  = req.body.Historia;
+    personaje.Imagen    = req.body.image;
+    personaje.Nombre    = req.body.name;
+    personaje.Edad      = req.body.age;
+    personaje.Peso      = req.body.weight;
+    personaje.Historia  = req.body.story;
     const creado        = await createCharacter(personaje);
     if(creado==null){
         status = 400;
@@ -30,11 +27,11 @@ router.put ('/characters/:id', async(req, res)=>{
     let status = 200;
     const id            = req.params.id;
     const personaje     = new Personaje();
-    personaje.Imagen    = req.body.Imagen;
-    personaje.Nombre    = req.body.Nombre;
-    personaje.Edad      = req.body.Edad;
-    personaje.Peso      = req.body.Peso;
-    personaje.Historia  = req.body.Historia;
+    personaje.Imagen    = req.body.image;
+    personaje.Nombre    = req.body.name;
+    personaje.Edad      = req.body.age;
+    personaje.Peso      = req.body.weight;
+    personaje.Historia  = req.body.story;
     const cambiado      = await updateCharacter(personaje, id);
     if(req.params.id < 0 || cambiado == null){
         status = 400;

@@ -1,25 +1,15 @@
 import sql from 'mssql';
 import configDB from '../models/db.js';
 
-export const getAllCharacters = async () => {
-    const conn      = await sql.connect(configDB);
-    const results   = await conn.request().query('SELECT Imagen, Nombre, IDPersonaje FROM Personajes');
-    /* select * from personajes where 
-	(@pId = id OR @pId = '') AND
-	(@pEdad = personajes.Edad OR pEdad = 0) AND
-
-
-
-select * from personajes where 
-	(@pId = id OR @pId = '') AND
-	(0 = personajes.Edad OR 0= 0) 
-
-
-string query = 'SELECT * FROM PERSONAJES WHERE '
-
-if (@pEdad)
-	query = query + ' AND pesonajes.edad = ' + @pEdad;
-*/
+export const getAllCharacters = async (lista) => {
+    let conn      = await sql.connect(configDB);
+    let results;
+    if (lista.every(validarLista)){
+        results   = await conn.request().query('SELECT Imagen, Nombre, IDPersonaje FROM Personajes');
+    }
+    else{
+        results   = await conn.request().input('pName', sql.VarChar, lista.name).input('pAge', sql.Int, lista.age).input('pWeight', sql.Float, lista.weight).input('pIdMovie', sql.Int, lista.idMovie).query('SELECT Imagen, Nombre, IDPersonaje FROM Personajes inner join Conexiones on Personajes.IDPersonaje = Conexiones.IDPersonaje inner join peliculas on Conexiones.IDPelicula = Peliculas.IDPelicula where (@pName is null or Nombre = @pName) and (@age IS NULL OR Edad = @age) and (@pweight IS NULL OR Peso = @pweight) (@IdMovie IS NULL OR Peliculas.IDPelicula = @IdMovie)');
+    }
     return results.recordset; 
 }
 export const createCharacter = async (personaje) => {
@@ -45,3 +35,4 @@ export const getDetailedCharacter = async (id) => {
     results1.recordset[0].Peliculas= results2.recordset;
     return results1.recordset[0]; 
 }
+let validarLista = (e) => e == undefined;
