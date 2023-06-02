@@ -1,33 +1,47 @@
 import sql from 'mssql';
 import configDB from '../models/db.js';
 
-export const getAllCharacters = async (lista) => {
+export const getAllCharacters = async (personaje) => {
     let conn      = await sql.connect(configDB);
     let results;
-    if (lista.every(validarLista)){
-        results   = await conn.request().query('SELECT Imagen, Nombre, IDPersonaje FROM Personajes');
-    }
-    else{
-        results   = await conn.request().input('pName', sql.VarChar, lista.name).input('pAge', sql.Int, lista.age).input('pWeight', sql.Float, lista.weight).input('pIdMovie', sql.Int, lista.idMovie).query('SELECT Imagen, Nombre, IDPersonaje FROM Personajes inner join Conexiones on Personajes.IDPersonaje = Conexiones.IDPersonaje inner join peliculas on Conexiones.IDPelicula = Peliculas.IDPelicula where (@pName is null or Nombre = @pName) and (@age IS NULL OR Edad = @age) and (@pweight IS NULL OR Peso = @pweight) (@IdMovie IS NULL OR Peliculas.IDPelicula = @IdMovie)');
-    }
+        let query = 'SELECT Personajes.Imagen, Personajes.Nombre, Personajes.IDPersonaje FROM Personajes inner join Conexiones on Personajes.IDPersonaje = Conexiones.IDPersonaje inner join Peliculas on Conexiones.IDPelicula = Peliculas.IDPelicula Where ';
+        if (personaje.Nombre){
+            query = query + ' Personajes.Nombre = @pName and';
+        }
+        if (personaje.Edad){
+            query = query + ' Personajes.Edad = @pAge and ';
+        }
+        if (personaje.Peso){
+            query = query + ' Personajes.Peso = @pWeight and ';
+        }
+        if (personaje.IdPelicula){
+            query = query + ' Peliculas.IDPelicula = @pIDMovie and ';
+        }
+        query = query.slice(0, -4);
+        results   = await conn.request().input('pName', sql.VarChar, personaje.Nombre).input('pAge', sql.Int, personaje.Edad).input('pWeight', sql.Float, personaje.Peso).input('pIdMovie', sql.Int, personaje.IdPelicula).query(query);
     return results.recordset; 
 }
+let validarLista = (e) => e == undefined;
+
 export const createCharacter = async (personaje) => {
     const conn      = await sql.connect(configDB);
     const results   = await conn.request().input('pImagen', sql.VarChar, personaje.Imagen).input('pNombre', sql.VarChar, personaje.Nombre).input('pEdad', sql.Int, personaje.Edad).input('pPeso', sql.Float, personaje.Peso).input('pHistoria', sql.VarChar, personaje.Historia).query('INSERT INTO Personajes (Imagen, Nombre, Edad, Peso, Historia) VALUES (@pImagen, @pNombre, @pEdad, @pPeso, @pHistoria)');
     return results.rowsAffected;
 }
+
 export const updateCharacter = async (personaje, id) => {
     const conn      = await sql.connect(configDB);
     const results   = await conn.request().input('pId', sql.Int, id).input('pNombre', sql.VarChar, personaje.Nombre).input('pimagen', sql.VarChar, personaje.Imagen).input('pEdad', sql.Int, personaje.Edad).input('pPeso', sql.Float, personaje.Peso).input('pHistoria', sql.VarChar, personaje.Historia).query('UPDATE Personajes SET Imagen=@pImagen, Nombre=@pNombre, Edad=@pEdad, Peso=@pPeso, Historia = @pHistoria WHERE IDPersonaje=@pId');
     return results.rowsAffected;
 }
+
 export const deleteCharacter = async (id) => {
     const conn      = await sql.connect(configDB);
     const results1   = await conn.request().input('pId', sql.Int, id).query('DELETE FROM Conexiones where IDPersonaje = @pId');
     const results2   = await conn.request().input('pId', sql.Int, id).query('DELETE FROM Personajes where IDPersonaje = @pId');
     return results1.recordset;
 }
+
 export const getDetailedCharacter = async (id) => {
     const conn      = await sql.connect(configDB);
     const results1  = await conn.request().input('pId', sql.Int, id).query('select * from Personajes where IDPersonaje = @pId;'); 
@@ -35,4 +49,3 @@ export const getDetailedCharacter = async (id) => {
     results1.recordset[0].Peliculas= results2.recordset;
     return results1.recordset[0]; 
 }
-let validarLista = (e) => e == undefined;

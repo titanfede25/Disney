@@ -22,14 +22,20 @@ router.get ('/movies/:id', async(req, res)=>{
 })
 router.post ('/movies', async(req, res)=>{
     let status = 201;
+    let creado;
     const pelicula              = new Pelicula();
     pelicula.Imagen             = req.body.Imagen;
     pelicula.Titulo             = req.body.Titulo;
     pelicula.FechaCreacion      = req.body.FechaCreacion;
     pelicula.Calificacion       = req.body.Calificacion;
-    const creado                = await createMovie(pelicula);
-    if(creado==null){
+    if(pelicula.Calificacion < 0 || pelicula.Calificacion > 5){
         status = 400;
+    }
+    else{
+        creado = await createMovie(pelicula);
+        if(creado==null){
+            status = 400;
+        }
     }
     res.status(status).send(creado);
 })

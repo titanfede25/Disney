@@ -5,4 +5,5 @@ export default class Personaje {
     Edad;
     Peso;
     Historia;
+    IdPelicula;
 }

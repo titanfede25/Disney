@@ -4,9 +4,13 @@ import {getAllCharacters, createCharacter, updateCharacter, deleteCharacter, get
 
 const router = Router();
 
-router.get ('/characters', async(req, res)=>{
-    const lista = [req.query.name, req.query.age, req.query.weight, req.query.idMovie];
-    const personajes        = await getAllCharacters(lista);
+router.get ('/characters/', async(req, res)=>{
+    const personaje         = new Personaje();
+    personaje.Nombre        = req.query.name;
+    personaje.Edad          = req.query.age;
+    personaje.Peso          = req.query.weight;
+    personaje.IdPelicula    = req.query.idMovie;
+    const personajes        = await getAllCharacters(personaje);
     res.status(200).send(personajes);
 })
 router.post ('/characters', async(req, res)=>{
