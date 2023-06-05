@@ -1,27 +1,35 @@
 import sql from 'mssql';
 import configDB from '../models/db.js';
 
-export const getAllCharacters = async (personaje) => {
+export const filteredCharacters = async (personaje) => {
     let conn      = await sql.connect(configDB);
     let results;
-        let query = 'SELECT Personajes.Imagen, Personajes.Nombre, Personajes.IDPersonaje FROM Personajes inner join Conexiones on Personajes.IDPersonaje = Conexiones.IDPersonaje inner join Peliculas on Conexiones.IDPelicula = Peliculas.IDPelicula Where ';
-        if (personaje.Nombre){
-            query = query + ' Personajes.Nombre = @pName and';
-        }
-        if (personaje.Edad){
-            query = query + ' Personajes.Edad = @pAge and ';
-        }
-        if (personaje.Peso){
-            query = query + ' Personajes.Peso = @pWeight and ';
-        }
-        if (personaje.IdPelicula){
-            query = query + ' Peliculas.IDPelicula = @pIDMovie and ';
-        }
-        query = query.slice(0, -4);
-        results   = await conn.request().input('pName', sql.VarChar, personaje.Nombre).input('pAge', sql.Int, personaje.Edad).input('pWeight', sql.Float, personaje.Peso).input('pIdMovie', sql.Int, personaje.IdPelicula).query(query);
+    let query;
+    if (personaje.IdPelicula){
+        query = 'SELECT Personajes.Imagen, Personajes.Nombre, Personajes.IDPersonaje FROM Peliculas inner join Conexiones on Peliculas.IDPelicula = Conexiones.IDPelicula inner join Personajes on Conexiones.IDPersonaje = Personajes.IDPersonaje Where Peliculas.IDPelicula = @pIdMovie and';
+    }
+    else{
+        query = 'SELECT Personajes.Imagen, Personajes.Nombre, Personajes.IDPersonaje FROM Personajes Where';
+    }
+    if (personaje.Nombre){
+        query = query + ' Personajes.Nombre = @pName and';
+    }
+    if (personaje.Edad){
+        query = query + ' Personajes.Edad = @pAge and';
+    }
+    if (personaje.Peso){
+        query = query + ' Personajes.Peso = @pWeight and';
+    }
+    query = query.slice(0, -4);
+    results   = await conn.request().input('pName', sql.VarChar, personaje.Nombre).input('pAge', sql.Int, personaje.Edad).input('pWeight', sql.Float, personaje.Peso).input('pIdMovie', sql.Int, personaje.IdPelicula).query(query);
     return results.recordset; 
 }
-let validarLista = (e) => e == undefined;
+
+export const getAllCharacters = async () => {
+    const conn      = await sql.connect(configDB);
+    const results   = await conn.request().query('SELECT Personajes.Imagen, Personajes.Nombre, Personajes.IDPersonaje FROM Personajes');
+    return results.recordset;
+}
 
 export const createCharacter = async (personaje) => {
     const conn      = await sql.connect(configDB);

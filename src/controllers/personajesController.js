@@ -1,16 +1,22 @@
 import { Router } from 'express';
 import Personaje from '../models/personaje.js'; 
-import {getAllCharacters, createCharacter, updateCharacter, deleteCharacter, getDetailedCharacter} from '../services/personajesService.js'
+import {filteredCharacters, getAllCharacters, createCharacter, updateCharacter, deleteCharacter, getDetailedCharacter} from '../services/personajesService.js'
 
 const router = Router();
 
-router.get ('/characters/', async(req, res)=>{
+router.get ('/characters', async(req, res)=>{
     const personaje         = new Personaje();
     personaje.Nombre        = req.query.name;
     personaje.Edad          = req.query.age;
     personaje.Peso          = req.query.weight;
     personaje.IdPelicula    = req.query.idMovie;
-    const personajes        = await getAllCharacters(personaje);
+    let personajes;
+    if(personaje.Nombre || personaje.Edad || personaje.Peso || personaje.IdPelicula){
+        personajes = await filteredCharacters(personaje);
+    }
+    else{
+        personajes = await getAllCharacters(personaje);
+    }
     res.status(200).send(personajes);
 })
 router.post ('/characters', async(req, res)=>{

@@ -6,6 +6,19 @@ export const getAllMovies = async () => {
     const results   = await conn.request().query('SELECT IDPelicula, Imagen, Titulo, FechaCreacion from Peliculas');
     return results.recordset; 
 }
+export const filteredMovies = async (pelicula) => {
+    let conn      = await sql.connect(configDB);
+    let results;
+    let query = 'SELECT IDPelicula, Imagen, Titulo, FechaCreacion from Peliculas ';
+    if (pelicula.Nombre){
+        query = query + 'where Titulo = @pTitulo ';
+    }
+    if (pelicula.Orden){
+        query = query + 'order by FechaCreacion ' + pelicula.Orden;
+    }
+    results   = await conn.request().input('pTitulo', sql.VarChar, pelicula.Nombre).query(query);
+    return results.recordset; 
+}
 export const getDetailedMovie = async (id) => {
     const conn      = await sql.connect(configDB);
     const results1  = await conn.request().input('pId', sql.Int, id).query('select * from Peliculas where IDPelicula = @pId;'); 

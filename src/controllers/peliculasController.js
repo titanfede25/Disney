@@ -1,12 +1,27 @@
 import { Router } from 'express';
 import Pelicula from '../models/Pelicula.js'; 
-import {createMovie, getAllMovies, getDetailedMovie, updateMovie, deleteMovie} from '../services/peliculasService.js';
+import {createMovie, getAllMovies, filteredMovies, getDetailedMovie, updateMovie, deleteMovie} from '../services/peliculasService.js';
 
 const router = Router();
 
 router.get ('/movies', async(req, res)=>{
-    const peliculas        = await getAllMovies();
-    res.status(200).send(peliculas);
+    let status = 200;
+    const pelicula         = new Pelicula()
+    pelicula.Nombre        = req.query.name;
+    pelicula.Orden         = req.query.order.toUpperCase();
+    let peliculas;
+    if(pelicula.Nombre || pelicula.Orden){
+        if(pelicula.Orden != "ASC" && pelicula.Orden != "DESC"){
+            status = 400;
+        }
+        else{
+            peliculas = await filteredMovies(pelicula);
+        }
+    }
+    else{
+        peliculas = await getAllMovies();
+    }
+    res.status(status).send(peliculas);
 })
 router.get ('/movies/:id', async(req, res)=>{ 
     let status = 200;
