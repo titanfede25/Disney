@@ -33,7 +33,7 @@ router.post ('/characters', async(req, res)=>{
     }
     res.status(status).send(creado);
 })
-router.put ('/characters/:id', async(req, res)=>{
+router.put ('/char  ers/:id', async(req, res)=>{
     let status = 200;
     const id            = req.params.id;
     const personaje     = new Personaje();

@@ -8,8 +8,7 @@ router.get ('/movies', async(req, res)=>{
     let status = 200;
     const pelicula         = new Pelicula()
     pelicula.Nombre        = req.query.name;
-    let i                  = req.query.order;
-    pelicula.Orden         = i.toUpperCase();
+    pelicula.Orden         = req?.query?.order?.toUpperCase();
     let peliculas;
     if(pelicula.Nombre || pelicula.Orden){
         if(pelicula.Orden != "ASC" && pelicula.Orden != "DESC"){
