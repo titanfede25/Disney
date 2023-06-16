@@ -1,15 +1,16 @@
 import { Router } from 'express';
 import Personaje from '../models/personaje.js'; 
 import {filteredCharacters, getAllCharacters, createCharacter, updateCharacter, deleteCharacter, getDetailedCharacter} from '../services/personajesService.js'
+import {Authenticate} from '../common/jwt.strategy.js';
 
 const router = Router();
 
-router.get ('/characters', async(req, res)=>{
+router.get ('/characters', Authenticate, async(req, res)=>{
     const personaje         = new Personaje();
     personaje.Nombre        = req.query.name;
     personaje.Edad          = req.query.age;
     personaje.Peso          = req.query.weight;
-    personaje.IdPelicula    = req.query.idMovie;
+    personaje.IdPelicula    = req.query.movies;
     let personajes;
     if(personaje.Nombre || personaje.Edad || personaje.Peso || personaje.IdPelicula){
         personajes = await filteredCharacters(personaje);
@@ -19,7 +20,7 @@ router.get ('/characters', async(req, res)=>{
     }
     res.status(200).send(personajes);
 })
-router.post ('/characters', async(req, res)=>{
+router.post ('/characters', Authenticate, async(req, res)=>{
     let status = 201;
     const personaje     = new Personaje();
     personaje.Imagen    = req.body.image;
@@ -33,7 +34,7 @@ router.post ('/characters', async(req, res)=>{
     }
     res.status(status).send(creado);
 })
-router.put ('/char  ers/:id', async(req, res)=>{
+router.put ('/characters/:id', Authenticate, async(req, res)=>{
     let status = 200;
     const id            = req.params.id;
     const personaje     = new Personaje();
@@ -48,7 +49,7 @@ router.put ('/char  ers/:id', async(req, res)=>{
     }
     res.status(status).send(cambiado);
 })
-router.delete ('/characters/:id', async(req, res)=>{
+router.delete ('/characters/:id',Authenticate, async(req, res)=>{
     let status = 200;
     if(req.params.id < 0){
         status = 400;
@@ -56,7 +57,7 @@ router.delete ('/characters/:id', async(req, res)=>{
     const idBorrado     = await deleteCharacter(req.params.id);
     res.status(status).send(idBorrado);
 })
-router.get ('/characters/:id', async(req, res)=>{ 
+router.get ('/characters/:id',Authenticate, async(req, res)=>{ 
     let status = 200;
     const id               = req.params.id;
     const personaje    = await getDetailedCharacter(id);

@@ -21,9 +21,9 @@ export const getRandomString = () => {
         payload: "custom payload",
         userEmail: userMail,
       },
-      process.env.AUTH_ISSUER_URL,
+      process.env.AUTH_HS256_KEY,
       {
-        issuer: "http://pizza.ort/",
+        issuer: process.env.AUTH_ISSUER_URL,
         subject: userId,
         audience: ["http://localhost/"],
         expiresIn: 60 * 24 * 24,
