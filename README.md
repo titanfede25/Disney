@@ -1,6 +1,6 @@
 # How to use an API connected with a Disney Star Wars database
 
-###Greetings everyone. If you are reading this I suppose you do not know about Javascript (React) and Microsoft SQL Server
+Greetings everyone. If you are reading this I suppose you do not know about Javascript (React) and Microsoft SQL Server
 
 #**Let's start **
 ##
