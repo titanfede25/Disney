@@ -3,7 +3,7 @@
 Greetings everyone. If you are reading this I suppose you do not know about Javascript (React) and Microsoft SQL Server
 
 # **Let's start**
-## We are going to begin to know what these technologies are
+##What are these technologies?
 
 ![Javatpoint](https://diatomenterprises.com/wp-content/uploads/2022/09/reactJS_logo.jpeg)  
 React is a free and open-source front-end JavaScript library for building user interfaces based on components. It is maintained by Meta (formerly Facebook) and a community of individual developers and companies.
