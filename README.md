@@ -3,7 +3,7 @@
 Greetings everyone. If you are reading this I suppose you do not know about Javascript and Microsoft SQL Server
 
 # **Let's start**
-#What are these technologies?
+## What are these technologies?
 
 ![Javascript](https://muytecnologicos.com/wp-content/uploads/2023/01/Ventajas-y-desventajas-de-javascript.jpeg)  
 
