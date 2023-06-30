@@ -1,11 +1,14 @@
 # How to use an API connected with a Disney Star Wars database
 
-Greetings everyone. If you are reading this I suppose you do not know about Javascript (React) and Microsoft SQL Server
+Greetings everyone. If you are reading this I suppose you do not know about Javascript and Microsoft SQL Server
 
 # **Let's start**
 ##What are these technologies?
 
-![Javatpoint](https://diatomenterprises.com/wp-content/uploads/2022/09/reactJS_logo.jpeg)  
-React is a free and open-source front-end JavaScript library for building user interfaces based on components. It is maintained by Meta (formerly Facebook) and a community of individual developers and companies.
+![Javascript](https://muytecnologicos.com/wp-content/uploads/2023/01/Ventajas-y-desventajas-de-javascript.jpeg)  
 
-React can be used to develop single-page, mobile, or server-rendered applications with frameworks like Next.js. Because React is only concerned with the user interface and rendering components to the DOM, React applications often rely on libraries for routing and other client-side functionality.
+JavaScript (/ˈdʒɑːvəskrɪpt/), often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. As of 2022, 98% of websites use JavaScript on the client side for webpage behavior, often incorporating third-party libraries. All major web browsers have a dedicated JavaScript engine to execute the code on users' devices.
+
+JavaScript is a high-level, often just-in-time compiled language that conforms to the ECMAScript standard.[10] It has dynamic typing, prototype-based object-orientation, and first-class functions. It is multi-paradigm, supporting event-driven, functional, and imperative programming styles. It has application programming interfaces (APIs) for working with text, dates, regular expressions, standard data structures, and the Document Object Model (DOM).
+
+The ECMAScript standard does not include any input/output (I/O), such as networking, storage, or graphics facilities. In practice, the web browser or other runtime system provides JavaScript APIs for I/O.
