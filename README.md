@@ -20,7 +20,7 @@ Microsoft SQL Server is a proprietary relational database management system deve
 
 # **Everything you need to do before running the proyect!**
 
-### 1) You have to install node-modules and Microsoft SQL Server:
+ 1) You have to install node-modules and Microsoft SQL Server:
 If you do not have either of the two, here are the links to install them
 
 ![Node-Modules](https://docs.npmjs.com/cli/v6/commands/npm-install)
