@@ -4,7 +4,7 @@
 
 #**Let's start **
 ##
-## We are going to begin to know what these technologies are
+ We are going to begin to know what these technologies are
 
 ### React is a free and open-source front-end JavaScript library for building user interfaces based on components. It is maintained by Meta (formerly Facebook) and a community of individual developers and companies.
 
