@@ -23,8 +23,8 @@ Microsoft SQL Server is a proprietary relational database management system deve
  1) You have to install node-modules and Microsoft SQL Server:
 If you do not have either of the two, here are the links to install them
 
-[Node-Modules](https://docs.npmjs.com/cli/v6/commands/npm-install)
+[Npm](https://docs.npmjs.com/cli/v6/commands/npm-install)
 
 [DataBase](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 
-3) 
+2) Then you have to open the proyect and install npm with the next command: npm i  (or npm install)
