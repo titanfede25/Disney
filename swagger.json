@@ -1,0 +1,399 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API de Películas y Personajes",
+    "version": "1.0.0",
+    "description": "API para gestionar películas y personajes"
+  },
+  "basePath": "/api",
+  "paths": {
+    "/movies": {
+      "get": {
+        "summary": "Obtener lista de películas",
+        "description": "Devuelve una lista de todas las películas o filtra por nombre y orden",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Nombre de la película (opcional)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Orden de la lista ('ASC' o 'DESC') (opcional)",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Movie"
+              }
+            }
+          },
+          "400": {
+            "description": "Parámetros inválidos"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear una nueva película",
+        "description": "Crea una nueva película con los datos proporcionados",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Datos de la película a crear",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MovieInput"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Película creada exitosamente",
+            "schema": {
+              "$ref": "#/definitions/Movie"
+            }
+          },
+          "400": {
+            "description": "Datos inválidos"
+          }
+        }
+      }
+    },
+    "/movies/{id}": {
+      "get": {
+        "summary": "Obtener película por ID",
+        "description": "Devuelve una película específica según su ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID de la película",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "$ref": "#/definitions/Movie"
+            }
+          },
+          "404": {
+            "description": "Película no encontrada"
+          },
+          "400": {
+            "description": "ID inválido"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar película por ID",
+        "description": "Actualiza una película existente con los datos proporcionados",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID de la película",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Datos de la película a actualizar",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MovieInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Película actualizada exitosamente",
+            "schema": {
+              "$ref": "#/definitions/Movie"
+            }
+          },
+          "400": {
+            "description": "ID inválido o datos inválidos"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar película por ID",
+        "description": "Elimina una película específica según su ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID de la película",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Película eliminada exitosamente"
+          },
+          "400": {
+            "description": "ID inválido"
+          }
+        }
+      }
+    },
+    "/characters": {
+      "get": {
+        "summary": "Obtener lista de personajes",
+        "description": "Devuelve una lista de todos los personajes o filtra por nombre, edad, peso y películas",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Nombre del personaje (opcional)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "age",
+            "in": "query",
+            "description": "Edad del personaje (opcional)",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "weight",
+            "in": "query",
+            "description": "Peso del personaje (opcional)",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "movies",
+            "in": "query",
+            "description": "ID de las película en las que aparece el personaje (opcional)",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Character"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear un nuevo personaje",
+        "description": "Crea un nuevo personaje con los datos proporcionados",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Datos del personaje a crear",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CharacterInput"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Personaje creado exitosamente",
+            "schema": {
+              "$ref": "#/definitions/Character"
+            }
+          },
+          "400": {
+            "description": "Datos inválidos"
+          }
+        }
+      }
+    },
+    "/characters/{id}": {
+      "get": {
+        "summary": "Obtener personaje por ID",
+        "description": "Devuelve un personaje específico según su ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del personaje",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "$ref": "#/definitions/Character"
+            }
+          },
+          "404": {
+            "description": "Personaje no encontrado"
+          },
+          "400": {
+            "description": "ID inválido"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar personaje por ID",
+        "description": "Actualiza un personaje existente con los datos proporcionados",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del personaje",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Datos del personaje a actualizar",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CharacterInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Personaje actualizado exitosamente",
+            "schema": {
+              "$ref": "#/definitions/Character"
+            }
+          },
+          "400": {
+            "description": "ID inválido o datos inválidos"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar personaje por ID",
+        "description": "Elimina un personaje específico según su ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del personaje",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Personaje eliminado exitosamente"
+          },
+          "400": {
+            "description": "ID inválido"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Movie": {
+      "type": "object",
+      "properties": {
+        "Image": {
+          "type": "string"
+        },
+        "Titulo": {
+          "type": "string"
+        },
+        "FechaCreacion": {
+          "type": "string",
+          "format": "date"
+        },
+        "Calificacion": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5
+        }
+      }
+    },
+    "MovieInput": {
+      "type": "object",
+      "properties": {
+        "Imagen": {
+          "type": "string"
+        },
+        "Titulo": {
+          "type": "string"
+        },
+        "FechaCreacion": {
+          "type": "string",
+          "format": "date"
+        },
+        "Calificacion": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5
+        }
+      },
+      "required": ["Imagen", "Titulo", "FechaCreacion", "Calificacion"]
+    },
+    "Character": {
+      "type": "object",
+      "properties": {
+        "imagen": {
+          "type": "string"
+        },
+        "Nombre": {
+          "type": "string"
+        },
+        "Edad": {
+          "type": "integer"
+        },
+        "Peso": {
+          "type": "integer"
+        },
+        "Historia": {
+          "type": "string"
+        }
+      }
+    },
+    "CharacterInput": {
+      "type": "object",
+      "properties": {
+        "Imagen": {
+          "type": "string"
+        },
+        "Nombre": {
+          "type": "string"
+        },
+        "Edad": {
+          "type": "integer"
+        },
+        "Peso": {
+          "type": "integer"
+        },
+        "Historia": {
+          "type": "string"
+        }
+      },
+      "required": ["Imagen", "Nombre", "Edad", "Peso", "Historia"]
+    }
+  }
+}
