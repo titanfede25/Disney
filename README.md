@@ -20,11 +20,19 @@ Microsoft SQL Server is a proprietary relational database management system deve
 
 # **Everything you need to do before running the proyect!**
 
- 1) You have to install node-modules and Microsoft SQL Server:
+ 1) You have to install npm and Microsoft SQL Server:
 If you do not have either of the two, here are the links to install them
 
 [Npm](https://docs.npmjs.com/cli/v6/commands/npm-install)
 
 [DataBase](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 
-2) Then you have to open the proyect and install npm with the next command: npm i  (or npm install)
+2) Then you have to open the proyect and install npm with the next command:
+ 
+npm i  (or npm install)
+
+# Let's run it!
+
+When you have finished installing and downloading everything, you have to  execute the query (the .sql file) in the databese and run  and  later you have to use in the proyect the next command: 
+
+npm start
