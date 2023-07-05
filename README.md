@@ -31,7 +31,7 @@ If you do not have either of the two, here are the links to install them
  
 -npm i  (or npm install)
 
-3) And finally you have to change in the .env file the SERVER_NAME
+3) And finally you have to change in the .env file the SERVER name to the name of your Database. You should be something like this:
 # Let's run it!
 
 When you have finished installing and downloading everything, you have to  execute the query (the .sql file) in the databese and run  and  later you have to use in the proyect the next command: 
