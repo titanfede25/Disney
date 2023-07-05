@@ -29,10 +29,10 @@ If you do not have either of the two, here are the links to install them
 
 2) Then you have to open the proyect and install npm with the next command:
  
-npm i  (or npm install)
+-npm i  (or npm install)
 
 # Let's run it!
 
 When you have finished installing and downloading everything, you have to  execute the query (the .sql file) in the databese and run  and  later you have to use in the proyect the next command: 
 
-npm start
+-npm start
