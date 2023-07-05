@@ -20,6 +20,8 @@ Microsoft SQL Server is a proprietary relational database management system deve
 
 # **Everything you need to do before running the proyect!**
 
+This API is not uploaded it to the web so you have to initialize it by yourself:
+
  1) You have to install npm, Microsoft SQL Server and Postman:
 If you do not have either of the two, here are the links to install them
 
@@ -52,3 +54,11 @@ To use Postman, you have two ways:
 When you have finished installing and downloading everything, you have to  execute the query (the .sql file) in the databese and run  and  later you have to use in the proyect the next command: 
 
 -npm start
+## After starting the proyect, it is not necessary to write this command again because it is using [Nodemon](https://www.oreilly.com/library/view/server-side-development/9781789345391/e2ac19e3-1bb0-4a10-8baf-3ea96b77c5b2.xhtml).   
+
+The first thing you should see is the number of the port (3001)
+
+
+
+https://guru99.com/postman-tutorial.html
+Then in the Postman you have to put in the URL input "http://localhost:3001/..."
