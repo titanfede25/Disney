@@ -33,7 +33,8 @@ If you do not have either of the two, here are the links to install them
 
 3) And finally you have to change in the .env file the SERVER name to the name of your Database. You should be something like this:
 
-![Captura](https://github.com/titanfede25/Disney/assets/111746138/73529a7d-9fa0-45e4-9692-f799676f7bda)
+![Captura2](https://github.com/titanfede25/Disney/assets/111746138/f9165bb0-2304-46f4-b056-afbb07215a48)
+
 
    
 # Let's run it!
