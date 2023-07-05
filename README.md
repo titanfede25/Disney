@@ -54,6 +54,7 @@ To use Postman, you have two ways:
 When you have finished installing and downloading everything, you have to  execute the query (the .sql file) in the databese and run  and  later you have to use in the proyect the next command: 
 
 -npm start
+
 ## After starting the proyect, it is not necessary to write this command again because it is using [Nodemon](https://www.oreilly.com/library/view/server-side-development/9781789345391/e2ac19e3-1bb0-4a10-8baf-3ea96b77c5b2.xhtml).   
 
 
