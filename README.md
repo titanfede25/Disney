@@ -30,6 +30,7 @@ If you do not have either of the two, here are the links to install them
 To use Postman, you have two ways:
 
 -The first one is to open Postman on the web
+
 -And the other way is downloading it. If you want to download it, here is the link:
 
 [Postman](https://www.postman.com/)
