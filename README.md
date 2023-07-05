@@ -32,6 +32,10 @@ If you do not have either of the two, here are the links to install them
 -npm i  (or npm install)
 
 3) And finally you have to change in the .env file the SERVER name to the name of your Database. You should be something like this:
+
+![Captura](https://github.com/titanfede25/Disney/assets/111746138/73529a7d-9fa0-45e4-9692-f799676f7bda)
+
+   
 # Let's run it!
 
 When you have finished installing and downloading everything, you have to  execute the query (the .sql file) in the databese and run  and  later you have to use in the proyect the next command: 
