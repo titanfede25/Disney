@@ -20,7 +20,7 @@ Microsoft SQL Server is a proprietary relational database management system deve
 
 # **Everything you need to do before running the proyect!**
 
- 1) You have to install npm and Microsoft SQL Server and Postman:
+ 1) You have to install npm, Microsoft SQL Server and Postman:
 If you do not have either of the two, here are the links to install them
 
 [Npm](https://docs.npmjs.com/cli/v6/commands/npm-install)
