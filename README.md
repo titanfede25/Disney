@@ -55,7 +55,7 @@ When you have finished installing and downloading everything, you have to  execu
 
 -npm start
 
-## After starting the proyect, it is not necessary to write this command again because it is using [Nodemon](https://www.oreilly.com/library/view/server-side-development/9781789345391/e2ac19e3-1bb0-4a10-8baf-3ea96b77c5b2.xhtml).   
+ After starting the proyect, it is not necessary to write this command again because it is using [Nodemon](https://www.oreilly.com/library/view/server-side-development/9781789345391/e2ac19e3-1bb0-4a10-8baf-3ea96b77c5b2.xhtml).   
 
 
 # How to use it!
