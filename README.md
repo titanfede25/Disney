@@ -38,7 +38,7 @@ Then you have to use Postman and for that, you have two ways:
 
 2) Then you have to open the proyect and install npm with the next command:
  
-### npm i  (or npm install)
+`` npm i  //(or npm install)``
 
 3) And finally you have to change in the .env file, the SERVER name (that is a variable) to the name of your Database. It should be something like this:
 
