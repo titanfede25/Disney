@@ -22,28 +22,25 @@ Microsoft SQL Server is a proprietary relational database management system deve
 
 This API is not uploaded it to the web so you have to initialize it by yourself:
 
- 1) You have to install npm, Microsoft SQL Server and Postman:
+ 1) You have to install node, Microsoft SQL Server:
 If you do not have either of the two, here are the links to install them
 
-[Npm](https://docs.npmjs.com/cli/v6/commands/npm-install)
+[Node](https://nodejs.org/es)
 
-[DataBase](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+[MS SQL SERVER](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 
-To use Postman, you have two ways:
+Then you have to use Postman and for that, you have two ways:
 
 -The first one is to open Postman on the web
 
--And the other way is downloading it. If you want to download it, here is the link:
-
-[Postman](https://www.postman.com/)
-
+-The other way is downloading it. If you want to download it, [here](https://www.postman.com/) is the link:
 
 
 2) Then you have to open the proyect and install npm with the next command:
  
 -npm i  (or npm install)
 
-3) And finally you have to change in the .env file the SERVER name to the name of your Database. You should be something like this:
+3) And finally you have to change in the .env file the SERVER name to the name of your Database. It should be something like this:
 
 ![Captura2](https://github.com/titanfede25/Disney/assets/111746138/f9165bb0-2304-46f4-b056-afbb07215a48)
 
