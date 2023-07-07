@@ -40,7 +40,7 @@ Then you have to use Postman and for that, you have two ways:
  
 -npm i  (or npm install)
 
-3) And finally you have to change in the .env file the SERVER name to the name of your Database. It should be something like this:
+3) And finally you have to change in the .env file, the SERVER name (that is a variable) to the name of your Database. It should be something like this:
 
 ![Captura2](https://github.com/titanfede25/Disney/assets/111746138/f9165bb0-2304-46f4-b056-afbb07215a48)
 
@@ -50,7 +50,7 @@ Then you have to use Postman and for that, you have two ways:
 
 When you have finished installing and downloading everything, you have to  execute the query (the .sql file) in the databese and run  and  later you have to use in the proyect the next command: 
 
--npm start
+///npm start
 
  After starting the proyect, it is not necessary to write this command again because it is using [Nodemon](https://www.oreilly.com/library/view/server-side-development/9781789345391/e2ac19e3-1bb0-4a10-8baf-3ea96b77c5b2.xhtml).   
 
