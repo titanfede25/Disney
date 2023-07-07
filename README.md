@@ -64,4 +64,4 @@ Then you will have to use Postman. If you do not know how to use it, here is a g
 
 Then in the Postman you have to put in the URL input "http://localhost:3001/..."
 
-Watch all you can do with the swagger.json file
+Watch all you can do with the swagger.json (./swagger.json)
