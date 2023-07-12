@@ -60,6 +60,8 @@ The first thing you should see is the number of the port (3001)
 
 Then you will have to use Postman. If you do not know how to use it, [here](https://guru99.com/postman-tutorial.html) is a guide
 
-Then in the Postman you have to put in the URL input "http://localhost:3001/..."
+Then in the Postman you have to put in the URL input (post) "http://localhost:3001/auth/login"
+
+If there is no problem with that request, you can start using the API "http://localhost:3001/..."
 
 Watch all you can do with the [swagger.json](./swagger.json)
