@@ -4,11 +4,11 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node ./src/server.js"
+    "start": "nodemon ./src/server.js"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": {   
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mssql": "^9.1.1",
@@ -23,5 +23,8 @@
     "url": "https://github.com/titanfede25/Pizza-Node/issues"
   },
   "homepage": "https://github.com/titanfede25/Pizza-Node#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
